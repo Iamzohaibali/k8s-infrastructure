@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: express-api-ingress
+  namespace: express-api
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+spec:
+  ingressClassName: nginx
+
+  tls:
+    - hosts:
+        - express-api.zohaibtech.dev
+      secretName: express-api-zohaibtech-dev-tls
+
+  rules:
+    - host: express-api.zohaibtech.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: express-api-service
+                port:
+                  number: 80
