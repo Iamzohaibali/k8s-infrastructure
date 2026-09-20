@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: express-api
-          image: zohaibpro/express-api:188448e
+          image: zohaibpro/express-api:b0f8777
 
           ports:
             - containerPort: 3000
